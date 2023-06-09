@@ -48,7 +48,7 @@ rm(aov_residuals)
 ##KRUSKAL-WALLACE TEST: ADULT ROCKFISH COUNT INDEPENDENT OF SEASON?
 ################################################################################
 
-#filter data for sites and years that have multiple seasons represented
+##filter data for sites and years that have multiple seasons represented
 data <- sum.dat %>% 
   filter(., Year >= 2017 & Site %in% c("Keystone", "Point Hudson", "Point Whitney", "Rockaway", "Sund Rock", "Edmonds"))
 
@@ -90,8 +90,21 @@ data <- data %>%
   unique()
 
 #Make individual plots
-Shannon <- ggboxplot(data, x="Season", y = "Shannon")
-RF_Count <- ggboxplot(data, x="Season", y="RF_Count") + scale_y_continuous(trans='log2')
+my_comparisons <- list(c("Winter", "Fall"), c("Fall", "Spring"))
+
+Shannon <- ggplot(data = data, aes(x=Season, y=Shannon)) + 
+  geom_boxplot() + theme_cowplot() + 
+  theme(axis.text.x=element_text(angle=45, hjust=1), axis.title.x=element_blank(), axis.text.x.bottom = element_blank()) +
+  scale_y_continuous(trans='log2') + ylab("Shannon Diversity") +
+  stat_compare_means(comparisons=my_comparisons)
+
+my_comparisons <- list(c("Winter", "Fall"), c("Spring", "Fall"))
+
+RF_Count <- ggplot(data = data, aes(x=Season, y=RF_Count)) + 
+  geom_boxplot() + theme_cowplot() + 
+  theme(axis.text.x=element_text(angle=45, hjust=1), axis.title.x=element_blank()) +
+  scale_y_continuous(trans='log2') + ylab("Adult rockfish count") +
+  stat_compare_means(comparisons=my_comparisons)
 
 #Plot together
 ggarrange(Shannon, RF_Count)
@@ -103,4 +116,6 @@ rm(data)
 rm(RF_Count)
 rm(Shannon)
 
-
+################################################################################
+#END OF SCRIPT
+################################################################################
