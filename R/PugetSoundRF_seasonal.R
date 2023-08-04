@@ -3,6 +3,7 @@
 ################################################################################
 
 ## This script includes code used for analysis of seasonal variation for the 2017-2023 puget sound rockfish data
+## Use with outputs from "PugetSoundRF_datacleaning.R" file
 #sites: Keystone, Point Hudson, Point Whitney, Rockaway, Sund Rock, Edmonds
 #years: 2017+
 
