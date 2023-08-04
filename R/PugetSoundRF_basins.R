@@ -3,6 +3,7 @@
 ################################################################################
 
 ## This script includes code used for analyzing basin differences for the 2009-2023 puget sound rockfish data
+## Use with outputs from "PugetSoundRF_datacleaning.R" file
 
 ################################################################################
 #OVERALL TREND IN ADULT ROCKFISH OBSERVATIONS
