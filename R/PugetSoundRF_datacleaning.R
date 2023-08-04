@@ -3,6 +3,7 @@
 ################################################################################
 
 ## This script includes code used for data cleaning and summary statistics on the 2009-2023 puget sound rockfish data
+## Inputs: "RF_100m.csv", "EIM_Env_Data.csv", and "Location_translation.csv"
 
 ################################################################################
 #SET UP
